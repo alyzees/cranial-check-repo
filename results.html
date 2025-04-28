@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<!--meta tags-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--styling-->
+		<link rel="stylesheet" href="styles.css">
+		<!--font link-->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="outer-page">
+			<div class="page">
+				<div id="results">
+					<h2>Results</h2>
+					<div>
+						<div style="display:none;">Symptoms: {{#account.data}}
+								<div class="symptoms-list">{{symptom}}</div>
+							{{/account.data}}</div>
+					</div>
+					<!-- <div class="condition">
+						<button class="collapsible">1. {{Condition 1}}</button>
+						<div class="content">
+							<p>Description</p>
+						</div>
+					</div>
+					<div class="condition">
+						<button class="collapsible">2. {{Condition 2}}</button>
+						<div class="content">
+							<p>Description</p>
+						</div>
+					</div>
+					<div class="condition">
+						<button class="collapsible">3. {{Condition 3}}</button>
+						<div class="content">
+							<p>Description</p>
+						</div>
+					</div>
+					<div class="condition">
+						<button class="collapsible">4. {{Condition 4}}</button>
+						<div class="content">
+							<p>Description</p>
+						</div>
+					</div>-->
+				</div>
+				<form action="/~/spring2021/cranial-check/account/results" method="post">
+					<div id="results-form">
+						<!--
+					<input type='hidden' name='condition' value='1. {{Condition 1}} '>
+					<input type='hidden' name='condition' value='2. {{Condition 2}} '>
+					<input type='hidden' name='condition' value='3. {{Condition 3}} '>
+					<input type='hidden' name='condition' value='4. {{Condition 4}} '>-->
+					</div>
+					<div class="center">
+						<button onclick="window.location.href='/~/spring2021/cranial-check/quiz'" class="btn-left">Return</button>
+						<button type="submit" class="btn-right" id="save-results">Save Results</button>
+					</div>
+					<input type='hidden' name='redirecturl' value='/~/spring2021/cranial-check/account'>
+				</form>
+			</div>
+		</div>
+		<div id="loading">
+			<h2>Loading your results...</h2>
+			<div class="loading-icon">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<p id="loading-text">DISCLAIMER: These suggestions are sourced from medical resources, articles, and journals. We are no replacement for a medical professional, so we encourage you to contact your primary doctor if your symptoms worsen. If you are in immediate need of medical attention please visit your local emergency room or call 911.</p>
+		</div>
+		<script src="results.js"></script>
+		<script>
+			var coll = document.getElementsByClassName("collapsible");
+
+			for (var i = 0; i < coll.length; i++) {
+				coll[i].addEventListener("click", function () {
+					this.classList.toggle("active");
+					var content = this.nextElementSibling;
+					if (content.style.maxHeight) {
+						content.style.maxHeight = null;
+					} else {
+						content.style.maxHeight = content.scrollHeight + "px";
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

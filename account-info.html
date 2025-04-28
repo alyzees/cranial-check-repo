@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<!--meta tags-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--styling-->
+		<link rel="stylesheet" href="account.css">
+		<!--font link-->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+		<!--<script src="jquery-3.5.1.min.js"></script>-->
+		<!--importing jquery library-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="edit.js"></script>
+	</head>
+
+	<body>
+		<button style="margin:20px" onclick="window.location.href='/~/spring2021/cranial-check_copy/menu'" class="return"><span>&#171;</span>Back to menu</button>
+		<div class="acc-info" style="text-align:center">
+			<h2 class="acc-title">My Account</h2>
+			<h3>Manage your profile information</h3>
+			<div>
+				<img src="assets/icons/profile.png" alt="profile icon" id="pfp">
+				<br />
+				<a onclick="toggleEdit(0)">Edit profile picture</a>
+				<div class="open-edit">
+					<input type="file" id="picture" onchange="showImg(this);">
+					<button onclick="saveImg()" class="chnge-btn">&#8690; Save Image</button>
+				</div>
+			</div>
+			<div class="acc-option">
+				<p><span><u>Name:</u> {{name}}</span> <a onclick="toggleEdit(1)">Edit</a></p>
+				<div class="open-edit">
+					<input class="change" type="text" placeholder="enter new name..." id="edit-name">
+					<button onclick="editName()" type="submit" value="submit" class="chnge-btn">Change</button>
+				</div>
+			</div>
+			<div class="acc-option">
+				<p><span><u>Email:</u> {{username}}</span> <a onclick="toggleEdit(2)">Edit</a></p>
+				<div class="open-edit">
+					<input class="change" type="email" placeholder="enter new email..." id="edit-email">
+					<button onclick="editEmail()" class="chnge-btn">Change</button>
+				</div>
+			</div>
+			<div class="acc-option">
+				<p><u>Password</u><a onclick="toggleEdit(3)">Edit</a></p>
+				<div class="open-edit">
+					<input class="change" type="password" placeholder="enter new password..." id="edit-pass">
+					<input class="change" type="password" placeholder="confirm new password..." id="confirm-pass">
+					<button onclick="editPassword()" class="chnge-btn">Change</button>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<!--meta tags-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--styling-->
+		<link rel="stylesheet" href="styles.css">
+		<!--font link-->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="about-info" style="display: flex;">
+			<div style="margin: auto 10px;"><img src="https://www.carissatang.com/spring2021/cranial-check/assets/patient.png" style="width: 80px;"></div>
+			<div>
+				<h2 class="head-title">Eye and Head Symptom Checker</h2>
+				<h3 style="padding: 10px;">Use our visual model and questionare to check your symptoms</h3>
+				<button onclick="window.location.href='/~/spring2021/cranial-check/menu'" class="return"><span>&#171;</span>Back to menu</button>
+			</div>
+			<a onclick="openNav()" id="open">&#9776;</a>
+		</div>
+
+
+		<!--start of giant form-->
+		<form action="/~/spring2021/cranial-check/account/data" method="post">
+			<!--age page-->
+			<div class="outer-page">
+				<div class="page" id="age">
+					<div>
+						<h2>Select your age</h2>
+					</div>
+					<!--"post" keeps data hidden from internet provider-->
+					<div class="slider-div">
+						<div class="slidecontainer">
+							<input type="range" min="1" max="100" value="50" class="slider" id="myRange" name="age">
+							<h4><span id="demo"></span></h4>
+						</div>
+					</div>
+					<div class="back-next-buttons">
+						<button class="btn-left" onclick="nextSlide(-1)" type="button" style="visibility: hidden;">Back</button>
+						<button class="btn-right" onclick="nextSlide(1)" type="button">Next</button>
+					</div>
+				</div>
+			</div>
+			<!--model/symptom select page-->
+			<div class="outer-page">
+				<div class="page" id="model">
+					<h2>Select your areas of pain and symptoms</h2>
+					<div class="area-symptoms">
+						<!--clickable model (left column)-->
+						<div id="pain-model">
+							<h3>Click any area of pain or discomfort to check symptoms corresponding to that area.</h3>
+							<!--clickable head model-->
+							<div id="clickable-model">
+								<img src="/spring2021/cranial-check/assets/headmodel.png" alt="Model of front and back head area">
+								<!---->
+								<!--<div class="click-area" id="click-temples" onmouseout="nothoverSymptomContent(0)" onmouseover="hoverSymptomContent(0)" onclick="toggleSymptomContent(0)"></div>
+								<div class="click-area" id="click-sinus" onmouseout="nothoverSymptomContent(1)" onmouseover="hoverSymptomContent(1)" onclick="toggleSymptomContent(1)"></div>
+								<div class="click-area" id="click-forehead" onmouseout="nothoverSymptomContent(2)" onmouseover="hoverSymptomContent(2)" onclick="toggleSymptomContent(2)"></div>
+								<div class="click-area" id="click-eye-1" onmouseout="nothoverSymptomContent(3)" onmouseover="hoverSymptomContent(3)" onclick="toggleSymptomContent(3)"></div>
+								<div class="click-area" id="click-eye-2" onmouseout="nothoverSymptomContent(3)" onmouseover="hoverSymptomContent(3)" onclick="toggleSymptomContent(3)"></div>
+								<div class="click-area" id="click-nose" onmouseout="nothoverSymptomContent(4)" onmouseover="hoverSymptomContent(4)" onclick="toggleSymptomContent(4)"></div>
+								<div class="click-area" id="click-throat" onmouseout="nothoverSymptomContent(5)" onmouseover="hoverSymptomContent(5)" onclick="toggleSymptomContent(5)"></div>-->
+								<!--temples-->
+								<div class="click-area" id="click-temples" onclick="toggleSymptomContent(0)" onmouseover="changeBoxColor(0)" onmouseout="revertBoxColor(0)"></div>
+								<!--sinus-->
+								<div class="click-area" id="click-sinus" onclick="toggleSymptomContent(1)" onmouseover="changeBoxColor(1)" onmouseout="revertBoxColor(1)"></div>
+								<!--forehead-->
+								<div class="click-area" id="click-forehead" onclick="toggleSymptomContent(2)" onmouseover="changeBoxColor(2)" onmouseout="revertBoxColor(2)"></div>
+								<!--left eye-->
+								<div class="click-area" id="click-eye-1" onclick="toggleSymptomContent(3)" onmouseover="changeBoxColor(3)" onmouseout="revertBoxColor(3)"></div>
+								<!--right eye-->
+								<div class="click-area" id="click-eye-2" onclick="toggleSymptomContent(3)" onmouseover="changeBoxColor(3)" onmouseout="revertBoxColor(3)"></div>
+								<!--nose-->
+								<div class="click-area" id="click-nose" onclick="toggleSymptomContent(4)" onmouseover="changeBoxColor(4)" onmouseout="revertBoxColor(4)"></div>
+								<!--throat-->
+								<div class="click-area" id="click-throat" onclick="toggleSymptomContent(5)" onmouseover="changeBoxColor(5)" onmouseout="revertBoxColor(5)"></div>
+							</div>
+						</div>
+						<!--corresponding symptoms (right column)-->
+						<div id="pain-select">
+							<h3>We encourage you to browse every area and check any symptoms that correspond to you for more accurate results.</h3>
+							<!--symptom collabsibles-->
+							<div id="symptoms-collapsible">
+								<div class="symptoms-section">
+									<h3>Sides of head and temples</h3>
+									<!--toggle the section of symptoms-->
+									<div id="temples" class="symptoms-content">
+										<div class="symptom-row"><input type="checkbox" class="checkbox" value="temple pain" id="temple-pain" name="symptom"><label for="temple-pain">Throbbing temple pain</label></div>
+										<div class="symptom-row"><input type="checkbox" class="checkbox" value="pain on one side of head" id="one-temple-pain" name="symptom"><label for="one-temple-pain">Throbbing head pain on one side of head</label></div>
+										<div class="symptom-row"><input type="checkbox" value="tender scalp" id="scalp" class="checkbox" name="symptom"><label for="scalp">Tenderness in scalp</label></div>
+										<div class="symptom-row"><input type="checkbox" value="contractions" id="contractions" class="checkbox" name="symptom"><label for="contractions">Muscle contractions in head and neck</label></div>
+									</div>
+								</div>
+								<div class="symptoms-section">
+									<h3>Sinus Area</h3>
+
+									<div id="sinus" class="symptoms-content">
+										<div class="symptom-row"><input type="checkbox" value="sinus pain" class="checkbox" id="sinus-pain" name="symptom"><label for="sinus-pain">Facial pressure or pain in the sinus area</label></div>
+									</div>
+								</div>
+								<div class="symptoms-section">
+									<h3>Forehead</h3>
+									<div id="forehead" class="symptoms-content">
+										<div class="symptom-row"><input type="checkbox" value="forehead pain" class="checkbox" id="forehead-pain" name="symptom"><label for="forehead-pain">Moderate pain or pressure around the forehead</label></div>
+									</div>
+								</div>
+								<div class="symptoms-section">
+									<h3>Eyes</h3>
+									<div class="symptoms-content" id="eyes">
+										<div class="symptom-row"><input type="checkbox" value="blind spots" class="checkbox" id="spots" name="symptom"><label for="spots">Visual phenomenon such as blind spots or floaters</label></div>
+										<div class="symptom-row"><input type="checkbox" value="pain in one eye" class="checkbox" id="one-eye-pain" name="symptom"><label for="one-eye-pain">Intense pain around or behind one eye</label></div>
+										<div class="symptom-row"><input type="checkbox" value="sensitivity" class="checkbox" id="sensitivity" name="symptom"><label for="sensitivity">Sensitivity to light and sound</label></div>
+										<div class="symptom-row"><input type="checkbox" value="swollen eyes" class="checkbox" id="swollen-eyes" name="symptom"><label for="swollen-eyes">Watery and/or swelling in both eyes</label></div>
+										<div class="symptom-row"><input type="checkbox" value="swelling in one eye" class="checkbox" id="one-swollen-eye" name="symptom"><label for="one-swollen-eye">Watery and/or swelling in one eye</label></div>
+										<div class="symptom-row"><input type="checkbox" value="sore eyes" class="checkbox" id="sore-eyes" name="symptom"><label for="sore-eyes">Sore and tired eyes</label></div>
+										<div class="symptom-row"><input type="checkbox" value="blurry" class="checkbox" id="blurry" name="symptom"><label for="blurry">Blurry or double vision</label></div>
+										<div class="symptom-row"><input type="checkbox" value="ptosis" class="checkbox" id="ptosis" name="symptom"><label for="ptosis">Ptosis (drooping eyelid)</label></div>
+										<div class="symptom-row"><input type="checkbox" value="miosis" class="checkbox" id="miosis" name="symptom"><label for="miosis">Miosis (contracture of the iris)</label></div>
+										<div class="symptom-row"><input type="checkbox" value="eye headache" class="checkbox" id="eye-headache" name="symptom"><label for="eye-headache">Headache around eye area</label></div>
+									</div>
+								</div>
+								<div class="symptoms-section">
+									<h3>Nose</h3>
+									<div class="symptoms-content" id="nose">
+										<div class="symptom-row"><input type="checkbox" value="runny nose" class="checkbox" id="runny" name="symptom"><label for="runny">Runny nose and/or nasal congestion on both sides</label></div>
+										<div class="symptom-row"><input type="checkbox" value="runny nose on one side" class="checkbox" id="runny-one-side" name="symptom"><label for="runny-one-side">Runny nose and/or nasal congestion on one side</label></div>
+									</div>
+								</div>
+								<div class="symptoms-section">
+									<h3>Throat</h3>
+									<div class="symptoms-content" id="throat">
+										<div class="symptom-row"><input type="checkbox" value="sore throat" class="checkbox" id="sore-throat" name="symptom"><label for="sore-throat">Sore or burning throat</label></div>
+										<div class="symptom-row"><input type="checkbox" value="cough" class="checkbox" id="cough" name="symptom"><label for="cough">Cough</label></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="back-next-buttons">
+						<button class="btn-left" onclick="nextSlide(-1)" type="button">Back</button>
+						<button class="btn-right" onclick="nextSlide(1)" type="button">Next</button>
+					</div>
+				</div>
+			</div>
+			<!--additional factors page-->
+			<div class="outer-page">
+				<div class="page" id="other-factors">
+					<h2>Select all statements that apply</h2>
+					<!--table-->
+					<div class="general-symptoms">
+						<div class="symptom-row">
+							<input type="checkbox" value="hormonal changes" id="hormones" class="checkbox" name="symptom"><label for="hormones">I am experiencing hormonal changes (menstruation, pregnancy, horomone medications,etc)</label>
+						</div>
+						<div class="symptom-row">
+							<input type="checkbox" value="dizziness" id="dizzy" class="checkbox" name="symptom"><label for="dizzy">I feel dizzy or lightheaded</label>
+						</div>
+						<div class="symptom-row">
+							<input type="checkbox" value="fever" id="fever" class="checkbox" name="symptom"><label for="fever">I currently have a fever</label>
+						</div>
+						<div class="symptom-row">
+							<input type="checkbox" value="stress" id="stress" class="checkbox" name="symptom"><label for="stress">I am under a lot of stress</label>
+						</div>
+						<div class="symptom-row">
+							<input type="checkbox" value="cold" id="cold" class="checkbox" name="symptom"><label for="cold">I have a cold or the flu</label>
+						</div>
+						<div class="symptom-row">
+							<input type="checkbox" value="depression" id="depression" class="checkbox" name="symptom"><label for="depression">I have depression and/or anxiety</label>
+						</div>
+						<div class="symptom-row">
+							<input type="checkbox" value="memory" id="memory" class="checkbox" name="symptom"><label for="memory">I have memory problems/poor concentration</label>
+						</div>
+						<div class="symptom-row">
+							<input type="checkbox" value="insomnia" id="insomnia" class="checkbox" name="symptom"><label for="insomnia">I am experiencing insomnia</label>
+						</div>
+						<div class="symptom-row">
+							<input type="checkbox" value="medications" id="medications" class="checkbox" name="symptom"><label for="medications">I am overusing medications and aware</label>
+						</div>
+						<div class="symptom-row">
+							<input type="checkbox" value="irritability" id="irritable" class="checkbox" name="symptom"><label for="irritable">I am irritable</label>
+						</div>
+						<div class="symptom-row">
+							<input type="checkbox" value="cravings" id="craving" class="checkbox" name="symptom"><label for="craving">I am craving alchol, salt, or chocolate</label>
+						</div>
+						<div class="symptom-row">
+							<input type="checkbox" value="urination" id="urination" class="checkbox" name="symptom"><label for="urination">I am experiencing decreased urination</label>
+						</div>
+					</div>
+					<input type="hidden" name="date" id="date">
+					<div class="back-next-buttons">
+						<button class="btn-left" onclick="nextSlide(-1)" type="button">Back</button>
+						<button class="btn-right" id="submit" type="submit">Finish</button>
+					</div>
+				</div>
+			</div>
+			<!--redirect to results page-->
+			<input type='hidden' name='redirecturl' value='/~/spring2021/cranial-check/results'>
+		</form> <!-- end of giant form -->
+		<div class="nav" id="nav">
+			<a id="close" href="javascript:void(0)" onclick="closeNav()">&times;</a>
+			<a class="btn" onclick="window.location.href='~/spring2021/cranial-check/account-info'">My Account</a>
+			<a class="btn" onclick='logout()'>Log Out</a>
+		</div>
+		<script src="script.js"></script>
+	</body>
+
+</html>

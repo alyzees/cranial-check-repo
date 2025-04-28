@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<!--meta tags-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--styling-->
+		<link rel="stylesheet" href="styles.css">
+		<!--font link-->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	</head>
+
+	<body>
+		<a onclick="openNav()" id="open">&#9776;</a>
+		<div class="nav" id="nav">
+			<a id="close" href="javascript:void(0)" onclick="closeNav()">&times;</a>
+			<a class="btn" onclick="window.location.href='/~/spring2021/cranial-check/account-info'">My Account</a>
+			<a class="btn" onclick='logout()'>Log Out</a>
+		</div>
+		<div class="menu">
+			<img src="/spring2021/cranial-check/assets/cranial-check-logo.gif" id="logo">
+			<h1>Explore Cranial Check</h1>
+			<div class="menu-container">
+				<div class="menu-item" onclick="window.location.href='/~/spring2021/cranial-check/quiz'">
+					<img src="assets/icons/2.png" alt="heart icon with heart rate symbol">
+					<h3>Check Symptoms</h3>
+					<p>Use our preliminary symptom checker, complete with a visual model, to check your head and eye symptoms and receive predicted conditions.</p>
+				</div>
+				<div class="menu-item" onclick="window.location.href='/~/spring2021/cranial-check/posture'">
+					<img src="assets/icons/1.png" alt="sitting on a chair icon"> 
+					<h3>Analyze Sitting Posture</h3>
+					<p>Use our posture analyzer model to check your sitting posture (side perspective) and recieve recommendations/tips.</p>
+				</div>
+				<div class="menu-item" onclick="window.location.href='/~/spring2021/cranial-check/account'">
+					<img src="assets/icons/4.png" alt="file document icon">
+					<h3>Access Results</h3>
+					<p>Browse and filter through all past and recent entries of symptoms and calculated results.</p>
+				</div>
+				<div class="menu-item" onclick="window.location.href='/~/spring2021/cranial-check/glossary'">
+					<img src="assets/icons/3.png" alt="book icon">
+					<h3>Visit Glossary</h3>
+					<p>Browse through our glossary of conditions to learn the description, causes, next steps, and more.</p>
+				</div>
+			</div>
+		</div>
+	<script src="account.js"></script>
+	</body>
+
+</html>

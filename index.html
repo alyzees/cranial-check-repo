@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<!--meta tags-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--styling-->
+		<link rel="stylesheet" href="styles.css">
+		<!--font link-->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	</head>
+
+	<body>
+		<main>
+			<!--home page-->
+			<div class="outer-page">
+				<div class="page" id="home">
+					<img src="/spring2021/cranial-check/assets/cranial-check-logo.gif" id="logo">
+					<h1>Cranial Check</h1>
+					<p id="bio">An online preliminary self-diagnostic tool to check your head and eye-related medical symptoms and find out possible conditions and treatments.</p>
+					<div class="center;">
+						<button class="btn-right" id="loginbtn"><a href="#login">Login</a></button>
+						<button class="btn-right" id="signupbtn"><a href="#signup">Sign Up</a></button>
+					</div>
+				</div>
+			</div>
+			
+			<!-- login page -->
+			<div id="login" class="modal">
+				<div class="modal-content">
+					<span id="close-login">&times;</span>
+					<form action='/~/spring2021/cranial-check/login' method='POST' enctype='multipart/form-data' autocomplete="on">
+						<h2>Login</h2>
+						<p>
+							<input class="Email" name="username" placeholder='Email' type="text" required>
+						</p>
+						<p>
+							<input class="password" name="password" placeholder='Password' type="password" required>
+						</p>
+						<div class="center">
+							<div>
+								<input type="submit" value="Login" class="submit">
+							</div>
+						</div>
+						<input type='hidden' name='redirecturl' value='/~/spring2021/cranial-check/account'>
+					</form>
+					<span id="go-signup" class="open">Don't have an account yet? Sign up!</span>
+				</div>
+			</div>
+			
+			<!-- sign up page -->
+			<div id="signup" class="modal">
+				<div class="modal-content">
+					<span id="close-signup">&times;</span>
+					<form action='/~/spring2021/cranial-check/signup' method='POST' enctype='multipart/form-data' autocomplete="on">
+						<h2>Sign Up</h2>
+						<p>
+							<input id="Name" name="name" type="text" placeholder='Name' required>
+						</p>
+						<p>
+							<input class="Email" name="username" type="text" placeholder='Email' required>
+						</p>
+						<p>
+							<input class="password" name="password" type="password" placeholder='Password' required>
+						</p>
+						<div class="center">
+							<div>
+								<input type="submit" value="Sign Up" class="submit">
+							</div>
+						</div>
+						<input type='hidden' name='redirecturl' value='/~/spring2021/cranial-check/account'>
+					</form>
+					<span id="go-login" class="open">Already have an account? Log in!</span>
+				</div>
+			</div>
+		</main>
+		<script src="script.js"></script>
+	</body>
+
+</html>

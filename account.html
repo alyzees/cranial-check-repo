@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<!--meta tags-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--styling-->
+		<link rel="stylesheet" href="account.css">
+		<!--font link-->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+		<!--<script type="module" src="script.js"></script>-->
+	</head>
+
+	<body>
+		<div class="about-info" style="display: flex;">
+			<div style="margin: auto 10px;"><img src="https://www.carissatang.com/spring2021/cranial-check/assets/patient.png" style="width: 80px;"></div>
+			<div>
+				<h1>{{name}}'s Results</h1>
+				<h3>{{username}}</h3>
+				<button class="return-btn" onclick="window.location.href='/~/spring2021/cranial-check/menu'">&#171; Back to menu</button>
+			</div>
+			<a onclick="openNav()" id="open">&#9776;</a>
+		</div>
+		<div style="width:90%; margin:auto;">
+			<section>
+				<div class="table-search">
+					<h2>Recent Results</h2>
+				</div>
+				<div class="latest">
+					<table>
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Age</th>
+								<th>Symptoms</th>
+								<th>Results</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{{#account.data}}
+										<div class="date-list">{{date}}</div>
+									{{/account.data}}</td>
+								<td>{{#account.data}}
+										<div class="age-list">{{age}}</div>
+									{{/account.data}}
+								</td>
+								<td>
+									<div class="sy" id="symptoms-display">{{#account.data}}
+											<div class="symptoms-list">{{symptom}}</div>
+									</div>
+									{{/account.data}}
+								</td>
+								<td>
+									<div id="conditions-display"> {{#account.results}}
+											<div class="conditions-list">{{condition}}</div>
+										{{/account.results}}</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+			<!--filter/table search-->
+			<section style="display: flex; justify-content:center; width:100%; margin:0;">
+				<div>
+					<div class="filter">
+						<h2>Filter</h2>
+							<div class="filter-option">
+								<button class="filter-name">Date</button>
+								<div class="filter-items">
+									<input type="radio" class="month radio" value="january" name="month" id="jan"><label for="jan">January</label>
+									<br>
+									<input type="radio" class="month radio" value="february" name="month" id="feb"><label for="feb">February</label>
+									<br>
+									<input type="radio" class="month radio" value="march" name="month" id="mar"><label for="mar">March</label>
+									<br>
+									<input type="radio" class="month radio" value="april" name="month" id="apr"><label for="apr">April</label>
+									<br>
+									<input type="radio" class="radio" value="may" name="month" id="may"><label for="may">May</label>
+									<br>
+									<input type="radio" class="month radio" value="june" name="month" id="jun"><label for="jun">June</label>
+									<br>
+									<input type="radio" class="month radio" value="july" name="month" id="jul"><label for="jul">July</label>
+									<br>
+									<input type="radio" class="month radio" value="august" name="month" id="aug"><label for="aug">August</label>
+									<br>
+									<input type="radio" class="month radio" value="september" name="month" id="sep"><label for="sep">September</label>
+									<br>
+									<input type="radio" class="month radio" value="october" name="month" id="oct"><label for="oct">October</label>
+									<br>
+									<input type="radio" class="month radio" value="november" name="month" id="nov"><label for="nov">Novemvber</label>
+									<br>
+									<input type="radio" class="month radio" value="december" name="month" id="dec"><label for="dec">December</label>
+								</div>
+							</div>
+							<div class="filter-option">
+								<button class="filter-name">Age</button>
+								<div class="filter-items">
+								<div style="display:none;">{{#account.data}}<div class="age-history">{{age}}
+								</div>{{/account.data}}</div>
+								<div id="age-filter"></div>
+								</div>
+						</div>
+							<div class="filter-option">
+								<button class="filter-name">Symptoms</button>
+								<div class="filter-items">
+									<input type="text" id="search-results" placeholder="Type to search..." title="Type in a symptom" onkeyup="searchResults()">
+								</div>
+						</div>
+							<div class="filter-option">
+								<button class="filter-name">Results</button>
+								<div class="filter-items">
+									<input type="radio" value="Migraine" id="migraine" name="condition-input" class="result-radio radio"><label for="migraine">Migraine</label>
+									<br>
+									<input type="radio" value="Sinusitis" id="sinus" name="condition-input" class="result-radio radio"><label for="sinus">Sinusitis</label>
+									<br>
+									<input type="radio" value="Cluster Headache" id="cluster" name="condition-input" class="result-radio radio"><label for="cluster">Cluster Headache</label>
+									<br>
+									<input type="radio" value="Tension Headache" id="tension" name="condition-input" class="result-radio radio"><label for="tension">Tension Headache</label>
+									<br>
+									<input type="radio" value="Eye Strain" id="eye" name="condition-input" class="result-radio radio"><label for="eye">Eye Strain</label>
+									<br>
+									<input type="radio" value="Hemicrania Continua" id="hemicrania" name="condition-input" class="result-radio radio"><label for="hemicrania" >Hemicrania Continua</label>
+									<br>
+									<input type="radio" value="Post-Traumatic Headache" id="trauma" name="condition-input" class="result-radio radio"><label for="trauma">Post-Traumatic Headaches</label>
+									<br>
+									<input type="radio" value="Hormone Headache" id="hormone" name="condition-input" class="result-radio radio"><label for="hormone">Hormone Headaches</label>
+									<br>
+									<input type="radio" value="Rebound Headache" id="rebound" name="condition-input" class="result-radio radio"><label for="rebound">Medication Overuse / Rebound Headaches</label>
+								</div>
+							</div>
+					</div>
+				</div>
+				<div style="display: flex; flex-direction: column; width:100%;">
+					<div class="table-search">
+						<h2>Past Results</h2>
+						<!--<input type="text" class="search-results" onkeyup="searchResults()" placeholder="Type to search..." title="Type in a name">-->
+					</div>
+					<div class="past scroll">
+						<table id="past-table">
+							<thead>
+								<tr>
+									<th>Date</th>
+									<th>Age</th>
+									<th>Symptoms</th>
+									<th>Results</th>
+								</tr>
+							</thead>
+							<tbody id="tbody"></tbody>
+						</table>
+					</div>
+					<a href="/~/spring2021/cranial-check/glossary" target="_blank" class="view-results">What do my results mean?</a>
+				</div>
+			</section>
+		</div>
+		<div class="nav" id="nav">
+			<a id="close" href="javascript:void(0)" onclick="closeNav()">&times;</a>
+			<a class="btn" onclick='logout()'>Log Out</a>
+			<a class="btn" onclick="window.location.href='/~/spring2021/cranial-check/quiz'">Take Quiz</a>
+			<a class="btn" onclick="window.location.href='/~/spring2021/cranial-check/glossary'">Visit Glossary</a>
+		</div>
+		<script src="account.js"></script>
+		<script type="module" src="script.js"></script>
+	</body>
+
+</html>
